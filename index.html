@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.22">
+<meta name="generator" content="Asciidoctor.js 4.0.6">
 <meta name="author" content="Tutorial básico de n8n">
 <title>Práctica 5: Orquestación de Microservicios con Docker Compose, PostgreSQL y RabbitMQ</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CNoto+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
 /* Uncomment the following line when using as a custom stylesheet */
@@ -95,10 +95,10 @@ dl dd{margin-bottom:1.25em}
 blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
 blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
 @media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
-h1{font-size:2.75em}
-h2{font-size:2.3125em}
-h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
-h4{font-size:1.4375em}}
+  h1{font-size:2.75em}
+  h2{font-size:2.3125em}
+  h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+  h4{font-size:1.4375em}}
 table{background:#fff;margin-bottom:1.25em;border:1px solid #dedede;word-wrap:normal}
 table thead,table tfoot{background:#f7f8f7}
 table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
@@ -117,7 +117,6 @@ h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title str
 :not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
 pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
 pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
-pre>code{display:block}
 pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
 em em{font-style:normal}
 strong strong{font-weight:400}
@@ -162,21 +161,21 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toc a:active{text-decoration:underline}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
-body.toc2{padding-left:15em;padding-right:0}
-body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
-#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
-#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
-#toc.toc2>ul{font-size:.9em;margin-bottom:0}
-#toc.toc2 ul ul{margin-left:0;padding-left:1em}
-#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
-body.toc2.toc-right{padding-left:0;padding-right:15em}
-body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+  body.toc2{padding-left:15em;padding-right:0}
+  body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+  #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+  #toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+  #toc.toc2>ul{font-size:.9em;margin-bottom:0}
+  #toc.toc2 ul ul{margin-left:0;padding-left:1em}
+  #toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+  body.toc2.toc-right{padding-left:0;padding-right:15em}
+  body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
 @media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
-#toc.toc2{width:20em}
-#toc.toc2 #toctitle{font-size:1.375em}
-#toc.toc2>ul{font-size:.95em}
-#toc.toc2 ul ul{padding-left:1.25em}
-body.toc2.toc-right{padding-left:0;padding-right:20em}}
+  #toc.toc2{width:20em}
+  #toc.toc2 #toctitle{font-size:1.375em}
+  #toc.toc2>ul{font-size:.95em}
+  #toc.toc2 ul ul{padding-left:1.25em}
+  body.toc2.toc-right{padding-left:0;padding-right:20em}}
 #content #toc{border:1px solid #e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;border-radius:4px}
 #content #toc>:first-child{margin-top:0}
 #content #toc>:last-child{margin-bottom:0}
@@ -185,7 +184,7 @@ body.toc2.toc-right{padding-left:0;padding-right:20em}}
 #content{margin-bottom:.625em}
 .sect1{padding-bottom:.625em}
 @media screen and (min-width:768px){#content{margin-bottom:1.25em}
-.sect1{padding-bottom:1.25em}}
+  .sect1{padding-bottom:1.25em}}
 .sect1:last-child{padding-bottom:0}
 .sect1+.sect1{border-top:1px solid #e7e7e9}
 #content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
@@ -220,6 +219,7 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class=highlight],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
 .literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
 .listingblock>.content{position:relative}
+.listingblock pre>code{display:block}
 .listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
 .listingblock:hover code[data-lang]::before{display:block}
 .listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
@@ -399,39 +399,39 @@ p{margin-bottom:1.25rem}
 .print-only{display:none!important}
 @page{margin:1.25cm .75cm}
 @media print{*{box-shadow:none!important;text-shadow:none!important}
-html{font-size:80%}
-a{color:inherit!important;text-decoration:underline!important}
-a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
-a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
-abbr[title]{border-bottom:1px dotted}
-abbr[title]::after{content:" (" attr(title) ")"}
-pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
-thead{display:table-header-group}
-svg{max-width:100%}
-p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
-h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
-#header,#content,#footnotes,#footer{max-width:none}
-#toc,.sidebarblock,.exampleblock>.content{background:none!important}
-#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
-body.book #header{text-align:center}
-body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
-body.book #header .details{border:0!important;display:block;padding:0!important}
-body.book #header .details span:first-child{margin-left:0!important}
-body.book #header .details br{display:block}
-body.book #header .details br+span::before{content:none!important}
-body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
-body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
-.listingblock code[data-lang]::before{display:block}
-#footer{padding:0 .9375em}
-.hide-on-print{display:none!important}
-.print-only{display:block!important}
-.hide-for-print{display:none!important}
-.show-for-print{display:inherit!important}}
+  html{font-size:80%}
+  a{color:inherit!important;text-decoration:underline!important}
+  a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+  a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+  abbr[title]{border-bottom:1px dotted}
+  abbr[title]::after{content:" (" attr(title) ")"}
+  pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+  thead{display:table-header-group}
+  svg{max-width:100%}
+  p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+  h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+  #header,#content,#footnotes,#footer{max-width:none}
+  #toc,.sidebarblock,.exampleblock>.content{background:none!important}
+  #toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+  body.book #header{text-align:center}
+  body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+  body.book #header .details{border:0!important;display:block;padding:0!important}
+  body.book #header .details span:first-child{margin-left:0!important}
+  body.book #header .details br{display:block}
+  body.book #header .details br+span::before{content:none!important}
+  body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+  body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+  .listingblock code[data-lang]::before{display:block}
+  #footer{padding:0 .9375em}
+  .hide-on-print{display:none!important}
+  .print-only{display:block!important}
+  .hide-for-print{display:none!important}
+  .show-for-print{display:inherit!important}}
 @media amzn-kf8,print{#header>h1:first-child{margin-top:1.25rem}
-.sect1{padding:0!important}
-.sect1+.sect1{border:0}
-#footer{background:none}
-#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+  .sect1{padding:0!important}
+  .sect1+.sect1{border:0}
+  #footer{background:none}
+  #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
@@ -476,7 +476,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_ejercicio_3_persistencia_de_mensajes_y_dead_letter_queue_dificultad_alta">4.3. Ejercicio 3: Persistencia de Mensajes y "Dead Letter Queue" (Dificultad: Alta)</a></li>
 </ul>
 </li>
-<li><a href="#_5_conclusión_y_avance_de_la_próxima_práctica">5. 5. Conclusión y Avance de la Próxima Práctica</a></li>
+<li><a href="#_conclusiones_y_avance_de_la_próxima_práctica">5. Conclusiones y Avance de la Próxima Práctica</a></li>
 </ul>
 </div>
 </div>
@@ -485,7 +485,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_resumen">Resumen</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Resumen la Práctica 5</p>
+<p>En esta práctica se evoluciona el gestor de tareas de un único servicio a una aplicación distribuida con Docker Compose. Se incorpora PostgreSQL para persistir las tareas y RabbitMQ para comunicar de forma asíncrona la API web con un trabajador Python. El guion incluye la configuración de los contenedores, el código de los servicios y pruebas para verificar la persistencia y el envío de mensajes.</p>
 </div>
 <div class="ulist">
 <div class="title">Objetivos</div>
@@ -497,7 +497,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Persistencia de Datos.</p>
 </li>
 <li>
-<p>Integración de Bases de Datos</p>
+<p>Integración de Bases de Datos.</p>
 </li>
 <li>
 <p>Comunicación Asíncrona.</p>
@@ -557,16 +557,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>En la práctica anterior, gestionamos un único contenedor con comandos como <code>docker run</code>, <code>docker stop</code>, etc. Imagínese hacer esto para una aplicación con cinco, diez o cincuenta microservicios, cada uno con su propia configuración de puertos, volúmenes y variables de entorno. Sería un proceso manual, propenso a errores e insostenible.</p>
 </div>
 <div class="paragraph">
-<p><strong>Docker Compose</strong> es la herramienta de Docker diseñada para resolver este problema. Permite definir y ejecutar aplicaciones multi-contenedor utilizando un único fichero de configuración en formato YAML, típicamente llamado <code>docker-compose.yml</code>. En este fichero, se declaran todos los servicios que componen la aplicación, junto con sus configuraciones, redes y volúmenes. Con un solo comando (<code>docker-compose up</code>), Docker Compose lee este fichero, crea una red compartida para los servicios y levanta todos los contenedores en el orden correcto.</p>
+<p><strong>Docker Compose</strong> permite definir y ejecutar aplicaciones multi-contenedor mediante un fichero YAML, típicamente llamado <code>compose.yaml</code> o <code>docker-compose.yml</code>. Compose crea una red para los servicios y permite iniciarlos con <code>docker compose up</code>. <code>depends_on</code> puede ordenar el inicio, pero por sí solo no garantiza que una base de datos o un bróker ya estén listos para aceptar conexiones; para ello se necesitan comprobaciones de salud o reintentos en la aplicación.</p>
 </div>
 <div class="paragraph">
 <p>Un fichero <code>docker-compose.yml</code> se estructura en torno a tres secciones principales:</p>
 </div>
 <div class="ulist">
 <ul>
-<li>
-<p><code>version</code>: Especifica la versión de la sintaxis de Docker Compose que se está utilizando.</p>
-</li>
 <li>
 <p><code>services</code>: Es el corazón del fichero. Aquí se define cada uno de los contenedores que forman parte de la aplicación (e.g., <code>web</code>, <code>db</code>, <code>worker</code>). Para cada servicio, se puede especificar:</p>
 <div class="ulist">
@@ -590,7 +587,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </li>
 <li>
-<p><code>volumes</code> y <code>networks</code>: Secciones de nivel superior para definir volúmenes y redes nombrados que pueden ser compartidos entre los servicios.</p>
+<p><code>volumes</code> y <code>networks</code>: Secciones de nivel superior para definir volúmenes y redes nombrados que pueden ser compartidos entre los servicios. En Compose actual, la clave superior <code>version</code> está obsoleta y se puede omitir.</p>
 </li>
 </ul>
 </div>
@@ -648,17 +645,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_desarrollo_práctico_evolucionando_el_gestor_de_tareas">3. Desarrollo Práctico: Evolucionando el "Gestor de Tareas"</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>En esta sección, transformaremos nuestro microservicio único en una aplicación de tres componentes: una API web, una base de datos PostgreSQL y un trabajador asíncrono, todos orquestados por Docker Compose.</p>
+<p>En esta sección, transformaremos nuestro microservicio único en una aplicación de cuatro servicios: una API web, una base de datos PostgreSQL, un bróker RabbitMQ y un trabajador asíncrono, todos orquestados por Docker Compose.</p>
 </div>
 <div class="sect2">
 <h3 id="_estructura_del_proyecto_y_configuración_inicial">3.1. Estructura del Proyecto y Configuración Inicial</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Partiendo del proyecto <code>task-manager-service</code> de la práctica anterior, vamos a reorganizarlo para soportar múltiples servicios. La nueva estructura será:</p>
+<p>Partiendo del proyecto de la práctica anterior, vamos a reorganizarlo para soportar múltiples servicios. Se proporciona una implementación de referencia en el directorio <code>task-manager-service/</code>; también puede crear la estructura manualmente:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">task-manager-system/
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">task-manager-service/
 ├── docker-compose.yml
 ├── web/
 │   ├── app.py
@@ -672,10 +669,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </li>
 <li>
-<p>Cree el directorio raíz <code>task-manager-system</code>. Mueva el contenido de su proyecto anterior a la subcarpeta <code>web/</code>.</p>
-</li>
-<li>
-<p>Cree la nueva carpeta <code>worker/</code>.</p>
+<p>Use <code>task-manager-service/</code> como raíz del proyecto (o cree un directorio con otro nombre si está trabajando desde cero). Coloque el servicio Flask en <code>web/</code> y cree la carpeta <code>worker/</code>.</p>
 </li>
 </ol>
 </div>
@@ -683,71 +677,116 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_creación_del_fichero_docker_compose_yml">3.2. Creación del Fichero <code>docker-compose.yml</code></h3>
 <div class="paragraph">
-<p>Este fichero será el centro de control de nuestra aplicación. Créelo en la raíz del proyecto (<code>task-manager-system/docker-compose.yml</code>) con el siguiente contenido:</p>
+<p>Este fichero será el centro de control de la aplicación. Créelo en la raíz del proyecto (<code>task-manager-service/docker-compose.yml</code>) o revise la configuración de referencia proporcionada:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">version: '3.8'
-
-services:
-  # Servicio de la API Web (Flask)
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">services:
   web:
-    build:./web
+    build: ./web
     container_name: task-manager-web
+    restart: unless-stopped
     ports:
       - "5001:5000"
     volumes:
-      -./web:/app  # Montaje para desarrollo en vivo
+      - ./web:/app
     environment:
-      - DATABASE_URL=postgresql://user:password@db:5432/taskdb
-      - RABBITMQ_URL=amqp://guest:guest@mq:5672/%2F
+      DATABASE_URL: postgresql+psycopg2://user:password@db:5432/taskdb
+      RABBITMQ_URL: amqp://task_user:task_password@mq:5672/%2F
     depends_on:
-      - db
-      - mq
+      db:
+        condition: service_healthy
+      mq:
+        condition: service_healthy
 
-  # Servicio del Trabajador Asíncrono (Consumer)
   worker:
-    build:./worker
+    build: ./worker
     container_name: task-manager-worker
+    restart: unless-stopped
     volumes:
-      -./worker:/app # Montaje para desarrollo en vivo
+      - ./worker:/app
     environment:
-      - RABBITMQ_URL=amqp://guest:guest@mq:5672/%2F
+      RABBITMQ_URL: amqp://task_user:task_password@mq:5672/%2F
     depends_on:
-      - mq
+      mq:
+        condition: service_healthy
 
-  # Servicio de la Base de Datos
   db:
-    image: postgres:14-alpine
+    image: postgres:16-alpine
     container_name: task-manager-db
+    restart: unless-stopped
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - postgres_data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=taskdb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: taskdb
     ports:
-      - "5433:5432" # Exponer para depuración externa
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d taskdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
 
-  # Servicio del Bróker de Mensajes
   mq:
     image: rabbitmq:3-management-alpine
     container_name: task-manager-mq
+    restart: unless-stopped
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: task_user
+      RABBITMQ_DEFAULT_PASS: task_password
     ports:
-      - "5672:5672"   # Puerto para la comunicación AMQP
-      - "15672:15672" # Puerto para la interfaz de gestión web
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 15s
 
 volumes:
-  postgres_data:</code></pre>
+  postgres_data:
+  rabbitmq_data:</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>Análisis del fichero:</strong>
-* Se definen cuatro servicios: <code>web</code>, <code>worker</code>, <code>db</code> y <code>mq</code>.
-* Los servicios <code>web</code> y <code>worker</code> se construyen a partir de sus respectivos <code>Dockerfile</code>.
-* El servicio <code>web</code> depende (<code>depends_on</code>) de que <code>db</code> y <code>mq</code> estén iniciados.
-* Las credenciales y URLs de conexión se pasan como variables de entorno, desacoplando la configuración del código. Note cómo los servicios se comunican usando sus nombres de servicio (e.g., <code>db</code>, <code>mq</code>) como hostnames, gracias a la red interna que crea Docker Compose.
-* Se define un volumen nombrado <code>postgres_data</code> y se monta en el directorio de datos de PostgreSQL para garantizar la persistencia.</p>
+<p><strong>Análisis del fichero:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Se definen cuatro servicios: <code>web</code>, <code>worker</code>, <code>db</code> y <code>mq</code>.</p>
+</li>
+<li>
+<p>Los servicios <code>web</code> y <code>worker</code> se construyen a partir de sus respectivos <code>Dockerfile</code>.</p>
+</li>
+<li>
+<p>El servicio <code>web</code> espera a que las comprobaciones de salud de <code>db</code> y <code>mq</code> sean satisfactorias; <code>depends_on</code> sin <code>condition: service_healthy</code> solo ordena el inicio, no garantiza que el servicio esté listo.</p>
+</li>
+<li>
+<p>Las URLs de conexión se pasan como variables de entorno. Dentro de la red de Compose, los servicios usan los nombres <code>db</code> y <code>mq</code> como hostnames y los puertos internos <code>5432</code> y <code>5672</code>, respectivamente.</p>
+</li>
+<li>
+<p>Se define un volumen nombrado <code>postgres_data</code> y se monta en el directorio de datos de PostgreSQL para garantizar la persistencia.</p>
+</li>
+<li>
+<p>También se persisten los datos de RabbitMQ en <code>rabbitmq_data</code>; una cola durable y mensajes persistentes no sobreviven a la eliminación del contenedor si no se conserva el directorio de datos del bróker.</p>
+</li>
+<li>
+<p>El usuario <code>task_user</code> de RabbitMQ evita la restricción del usuario predeterminado <code>guest</code>, que solo puede conectarse desde localhost. Las credenciales de este ejemplo son únicamente para desarrollo local; no deben reutilizarse en producción.</p>
+</li>
+<li>
+<p>El usuario y la contraseña de PostgreSQL (<code>user</code>/<code>password</code>) y los puertos publicados son también solo para un entorno local de prácticas; no exponga esta configuración en una red pública.</p>
+</li>
+<li>
+<p>La imagen de PostgreSQL se fija en la versión mayor 16. No se debe cambiar la versión mayor si ya existe un volumen de datos creado con otra versión sin realizar una migración.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -759,108 +798,192 @@ volumes:
 <ol class="arabic">
 <li>
 <p><strong>Actualizar <code>web/requirements.txt</code>:</strong></p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Flask==2.2.2
-Flask-SQLAlchemy==3.0.3
-psycopg2-binary==2.9.5
-pika==1.3.1</code></pre>
-</div>
+<div class="paragraph">
+<p>Use las dependencias fijadas en <code>task-manager-service/web/requirements.txt</code>.</p>
 </div>
 </li>
 <li>
 <p><strong>Actualizar <code>web/Dockerfile</code>:</strong></p>
 <div class="paragraph">
-<p>El <code>Dockerfile</code> de la práctica anterior sigue siendo válido, ya que solo copia los ficheros e instala las dependencias de <code>requirements.txt</code>.</p>
+<p>Use Python 3.12 y asegúrese de separar el origen y el destino en las instrucciones <code>COPY</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-dockerfile hljs" data-lang="dockerfile">FROM python:3.12-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+EXPOSE 5000
+CMD ["python", "app.py"]</code></pre>
+</div>
 </div>
 </li>
 <li>
-<p><strong>Reescribir <code>web/app.py</code>:</strong></p>
+<p><strong>Revisar <code>web/app.py</code>:</strong></p>
 <div class="paragraph">
-<p>Reemplace el contenido de <code>app.py</code> con el siguiente código, que utiliza SQLAlchemy para la base de datos y Pika para publicar en RabbitMQ.</p>
+<p>El fichero de referencia <code>task-manager-service/web/app.py</code> configura SQLAlchemy con <code>SQLALCHEMY_DATABASE_URI</code>, valida el JSON de entrada, expone operaciones de consulta, creación, consulta por ID, finalización y eliminación, y publica eventos en RabbitMQ. Revise el código antes de ejecutarlo. La columna <code>done</code> incluye un valor predeterminado en el servidor para permitir inserciones directas desde n8n. <code>db.create_all()</code> crea tablas que no existen, pero no modifica tablas existentes: si el volumen ya contiene una tabla creada por una versión anterior, aplique una migración antes de usar la inserción directa de P6. Por ejemplo, para añadir el valor predeterminado que necesita esa inserción:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">ALTER TABLE task ALTER COLUMN done SET DEFAULT FALSE;</code></pre>
+</div>
 </div>
 </li>
 </ol>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python"># web/app.py
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">import json
 import os
+
 import pika
-import json
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-
-# --- Configuración de la Base de Datos ---
-app.config = os.environ.get('DATABASE_URL')
-app.config = False
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ["DATABASE_URL"]
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
-# --- Modelo de la Base de Datos ---
+
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), nullable=False)
     description = db.Column(db.String(255), nullable=True)
-    done = db.Column(db.Boolean, default=False)
+    done = db.Column(
+        db.Boolean,
+        nullable=False,
+        default=False,
+        server_default=db.false(),
+    )
 
     def to_dict(self):
         return {
-            'id': self.id,
-            'title': self.title,
-            'description': self.description,
-            'done': self.done
+            "id": self.id,
+            "title": self.title,
+            "description": self.description,
+            "done": self.done,
         }
 
-# --- Configuración de RabbitMQ ---
-RABBITMQ_URL = os.environ.get('RABBITMQ_URL')
+
 def publish_message(queue_name, message):
+    rabbitmq_url = os.environ["RABBITMQ_URL"]
+    connection = pika.BlockingConnection(pika.URLParameters(rabbitmq_url))
     try:
-        connection = pika.BlockingConnection(pika.URLParameters(RABBITMQ_URL))
         channel = connection.channel()
         channel.queue_declare(queue=queue_name, durable=True)
+        channel.confirm_delivery()
         channel.basic_publish(
-            exchange='',
+            exchange="",
             routing_key=queue_name,
             body=json.dumps(message),
-            properties=pika.BasicProperties(delivery_mode=2) # make message persistent
+            properties=pika.BasicProperties(delivery_mode=2),
+            mandatory=True,
         )
-        connection.close()
-        print(f" [x] Sent message to queue '{queue_name}'")
-    except Exception as e:
-        print(f"Error publishing message: {e}")
+    finally:
+        if connection.is_open:
+            connection.close()
 
-# --- Endpoints de la API ---
-@app.route('/tasks', methods=)
+
+def publish_task_event(queue_name, task):
+    try:
+        publish_message(queue_name, task.to_dict())
+    except (pika.exceptions.AMQPError, OSError):
+        app.logger.exception("No se pudo publicar el evento en %s", queue_name)
+        return (
+            jsonify(
+                {
+                    "error": (
+                        "La tarea se guardó en PostgreSQL, pero no se pudo "
+                        "publicar el mensaje en RabbitMQ."
+                    ),
+                    "task": task.to_dict(),
+                }
+            ),
+            503,
+        )
+    return None
+
+
+@app.get("/tasks")
 def get_tasks():
-    tasks = Task.query.all()
-    return jsonify({'tasks': [task.to_dict() for task in tasks]})
+    tasks = db.session.execute(
+        db.select(Task).order_by(Task.id)
+    ).scalars()
+    return jsonify({"tasks": [task.to_dict() for task in tasks]})
 
-@app.route('/tasks', methods=)
+
+@app.get("/tasks/&lt;int:task_id&gt;")
+def get_task(task_id):
+    task = db.session.get(Task, task_id)
+    if task is None:
+        return jsonify({"error": "Task not found"}), 404
+    return jsonify({"task": task.to_dict()})
+
+
+@app.post("/tasks")
 def create_task():
-    if not request.json or not 'title' in request.json:
-        return jsonify({'error': 'Bad request: title is required'}), 400
+    payload = request.get_json(silent=True)
+    if not isinstance(payload, dict):
+        return jsonify({"error": "A JSON object is required"}), 400
 
-    new_task = Task(
-        title=request.json['title'],
-        description=request.json.get('description', "")
-    )
-    db.session.add(new_task)
+    title = payload.get("title")
+    if not isinstance(title, str) or not title.strip():
+        return jsonify({"error": "A non-empty title is required"}), 400
+    if len(title.strip()) &gt; 120:
+        return jsonify({"error": "title must be at most 120 characters"}), 400
+
+    description = payload.get("description", "")
+    if not isinstance(description, str):
+        return jsonify({"error": "description must be a string"}), 400
+    if len(description) &gt; 255:
+        return jsonify({"error": "description must be at most 255 characters"}), 400
+
+    task = Task(title=title.strip(), description=description, done=False)
+    db.session.add(task)
     db.session.commit()
 
-    # Publicar mensaje en RabbitMQ
-    publish_message('task_created', new_task.to_dict())
+    publish_error = publish_task_event("task_created", task)
+    if publish_error is not None:
+        return publish_error
+    return jsonify({"task": task.to_dict()}), 201
 
-    return jsonify({'task': new_task.to_dict()}), 201
 
-#... (otros endpoints como get_task, delete_task pueden ser añadidos de forma similar)
+@app.put("/tasks/&lt;int:task_id&gt;/complete")
+def complete_task(task_id):
+    task = db.session.get(Task, task_id)
+    if task is None:
+        return jsonify({"error": "Task not found"}), 404
 
-if __name__ == '__main__':
+    task.done = True
+    db.session.commit()
+
+    publish_error = publish_task_event("task_completed", task)
+    if publish_error is not None:
+        return publish_error
+    return jsonify({"task": task.to_dict()})
+
+
+@app.delete("/tasks/&lt;int:task_id&gt;")
+def delete_task(task_id):
+    task = db.session.get(Task, task_id)
+    if task is None:
+        return jsonify({"error": "Task not found"}), 404
+
+    db.session.delete(task)
+    db.session.commit()
+    return "", 204
+
+
+if __name__ == "__main__":
     with app.app_context():
-        db.create_all() # Crea las tablas si no existen
-    app.run(host='0.0.0.0', port=5000, debug=True)</code></pre>
+        db.create_all()
+    app.run(host="0.0.0.0", port=5000, debug=False)</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Si PostgreSQL guarda la tarea pero RabbitMQ no confirma el mensaje, la API responde <code>503</code> e indica que la tarea ya quedó guardada. Son dos sistemas independientes: la operación no es atómica. Un reintento puede producir eventos duplicados; un patrón <strong>transactional outbox</strong> y consumidores idempotentes serían necesarios para garantías de entrega más fuertes.</p>
 </div>
 </div>
 <div class="sect2">
@@ -874,7 +997,7 @@ if __name__ == '__main__':
 <p><strong>Crear <code>worker/requirements.txt</code>:</strong></p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">pika==1.3.1</code></pre>
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">pika==1.3.2</code></pre>
 </div>
 </div>
 </li>
@@ -882,68 +1005,103 @@ if __name__ == '__main__':
 <p><strong>Crear <code>worker/Dockerfile</code>:</strong></p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-dockerfile hljs" data-lang="dockerfile">FROM python:3.9-slim-buster
+<pre class="highlightjs highlight"><code class="language-dockerfile hljs" data-lang="dockerfile">FROM python:3.12-slim
 WORKDIR /app
-COPY requirements.txt.
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-COPY..
-CMD ["python", "worker.py"]</code></pre>
+COPY . .
+CMD ["python", "-u", "worker.py"]</code></pre>
 </div>
 </div>
 </li>
 <li>
 <p><strong>Crear <code>worker/worker.py</code>:</strong></p>
 <div class="paragraph">
-<p>Este script se conectará a RabbitMQ, escuchará mensajes en la cola <code>task_created</code> y los procesará.</p>
+<p>Este script se conectará a RabbitMQ y escuchará mensajes en las colas <code>task_created</code> y <code>task_completed</code>.</p>
 </div>
 </li>
 </ol>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python"># worker/worker.py
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">import json
 import os
-import pika
-import json
 import time
 
-def main():
-    rabbitmq_url = os.environ.get('RABBITMQ_URL')
-    connection = None
+import pika
 
-    # Bucle para reintentar la conexión si RabbitMQ no está listo
-    while not connection:
+
+def connect_to_rabbitmq():
+    rabbitmq_url = os.environ["RABBITMQ_URL"]
+    while True:
         try:
-            connection = pika.BlockingConnection(pika.URLParameters(rabbitmq_url))
-            print("Worker: Conectado a RabbitMQ.")
+            connection = pika.BlockingConnection(
+                pika.URLParameters(rabbitmq_url)
+            )
+            print("Worker: conectado a RabbitMQ.")
+            return connection
         except pika.exceptions.AMQPConnectionError:
-            print("Worker: Esperando a RabbitMQ...")
+            print("Worker: RabbitMQ todavía no está disponible; reintento en 5 s.")
             time.sleep(5)
 
-    channel = connection.channel()
-    channel.queue_declare(queue='task_created', durable=True)
 
-    def callback(ch, method, properties, body):
-        task_data = json.loads(body)
-        print(f" [x] Recibido y procesado nuevo task: ID={task_data.get('id')}, Título='{task_data.get('title')}'")
-        # Aquí iría la lógica de procesamiento (enviar email, etc.)
-        ch.basic_ack(delivery_tag=method.delivery_tag)
+def make_callback(event_name):
+    def callback(channel, method, properties, body):
+        try:
+            task_data = json.loads(body)
+            if not isinstance(task_data, dict) or not task_data.get("title"):
+                raise ValueError("el mensaje no contiene un title válido")
+        except (json.JSONDecodeError, ValueError) as error:
+            print(f"Worker: mensaje inválido; se rechaza: {error}")
+            channel.basic_nack(
+                delivery_tag=method.delivery_tag,
+                requeue=False,
+            )
+            return
 
-    channel.basic_qos(prefetch_count=1)
-    channel.basic_consume(queue='task_created', on_message_callback=callback)
+        if event_name == "task_created":
+            print(
+                " [x] Tarea recibida: "
+                f"ID={task_data.get('id')}, Título='{task_data['title']}'"
+            )
+        else:
+            print(
+                " [+] Tarea completada: "
+                f"ID={task_data.get('id')}, Título='{task_data['title']}'"
+            )
+        channel.basic_ack(delivery_tag=method.delivery_tag)
 
-    print(' [*] Esperando mensajes. Para salir presione CTRL+C')
-    channel.start_consuming()
+    return callback
 
-if __name__ == '__main__':
+
+def main():
+    connection = connect_to_rabbitmq()
+    try:
+        channel = connection.channel()
+        channel.queue_declare(queue="task_created", durable=True)
+        channel.queue_declare(queue="task_completed", durable=True)
+        channel.basic_qos(prefetch_count=1)
+        channel.basic_consume(
+            queue="task_created",
+            on_message_callback=make_callback("task_created"),
+        )
+        channel.basic_consume(
+            queue="task_completed",
+            on_message_callback=make_callback("task_completed"),
+        )
+
+        print(" [*] Esperando mensajes. Para salir presione CTRL+C")
+        channel.start_consuming()
+    finally:
+        if connection.is_open:
+            connection.close()
+
+
+if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print('Interrumpido')
-        try:
-            sys.exit(0)
-        except SystemExit:
-            os._exit(0)</code></pre>
+        print("Worker: interrumpido.")</code></pre>
 </div>
 </div>
 </div>
@@ -954,16 +1112,16 @@ if __name__ == '__main__':
 <li>
 <p><strong>Levantar la aplicación:</strong></p>
 <div class="paragraph">
-<p>Desde el directorio raíz (<code>task-manager-system</code>), ejecute:</p>
+<p>Desde el directorio raíz (<code>task-manager-service</code>), ejecute:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker-compose up --build</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker compose up --build</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p><code>--build</code> fuerza la reconstrucción de las imágenes si ha habido cambios en los <code>Dockerfile</code> o en el código.
-Verá los logs de los cuatro contenedores iniciándose.</p>
+Compose esperará a que PostgreSQL y RabbitMQ estén saludables antes de iniciar la API y el trabajador.</p>
 </div>
 </li>
 <li>
@@ -975,7 +1133,7 @@ Verá los logs de los cuatro contenedores iniciándose.</p>
 <li>
 <p><strong>Verificar RabbitMQ:</strong></p>
 <div class="paragraph">
-<p>Abra un navegador y vaya a <code><a href="http://localhost:15672" class="bare">http://localhost:15672</a></code>. Use <code>guest</code> como usuario y contraseña. Verá la interfaz de gestión de RabbitMQ. Vaya a la pestaña "Queues" y verá la cola <code>task_created</code>.</p>
+<p>Abra un navegador y vaya a <code><a href="http://localhost:15672" class="bare">http://localhost:15672</a></code>. Use <code>task_user</code> como usuario y <code>task_password</code> como contraseña. Verá la interfaz de gestión de RabbitMQ. Vaya a la pestaña "Queues" y verá las colas <code>task_created</code> y <code>task_completed</code>. Estas credenciales son solo para desarrollo local.</p>
 </div>
 </li>
 <li>
@@ -993,10 +1151,10 @@ Verá los logs de los cuatro contenedores iniciándose.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Observe los logs del servicio <code>web</code>:</strong> Verá la petición POST y el mensaje <code>[x] Sent message to queue 'task_created'</code>.</p>
+<p><strong>Observe los logs del servicio <code>web</code>:</strong> Verá la petición POST.</p>
 </li>
 <li>
-<p><strong>Observe los logs del servicio <code>worker</code>:</strong> Verá el mensaje <code>[x] Recibido y procesado nuevo task&#8230;&#8203;</code>.</p>
+<p><strong>Observe los logs del servicio <code>worker</code>:</strong> Verá el mensaje <code>Tarea recibida: ID=&#8230;&#8203;, Título='&#8230;&#8203;'</code>.</p>
 </li>
 <li>
 <p><strong>Consulte la API de nuevo:</strong> <code>curl <a href="http://localhost:5001/tasks" class="bare">http://localhost:5001/tasks</a></code>. Verá que la tarea se ha guardado persistentemente en la base de datos.</p>
@@ -1007,7 +1165,7 @@ Verá los logs de los cuatro contenedores iniciándose.</p>
 <li>
 <p><strong>Detener la aplicación:</strong></p>
 <div class="paragraph">
-<p>Presione <code>Ctrl+C</code> en la terminal donde ejecutó <code>docker-compose up</code>. Para eliminar los contenedores, puede ejecutar <code>docker-compose down</code>. Si añade la opción <code>-v</code>, también eliminará el volumen de la base de datos.</p>
+<p>Presione <code>Ctrl+C</code> en la terminal donde ejecutó <code>docker compose up</code>. Para eliminar los contenedores, ejecute <code>docker compose down</code>. La opción <code>-v</code> elimina también los volúmenes <code>postgres_data</code> y <code>rabbitmq_data</code>: se perderán las tareas y los mensajes/colas persistidos. No la use si desea conservarlos.</p>
 </div>
 </li>
 </ol>
@@ -1029,7 +1187,7 @@ Verá los logs de los cuatro contenedores iniciándose.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Añada un nuevo endpoint <code>PUT /tasks/&lt;int:task_id&gt;/complete</code> a la API web (<code>web/app.py</code>).</p>
+<p>Si parte del proyecto base de la práctica anterior, añada el endpoint <code>PUT /tasks/&lt;int:task_id&gt;/complete</code> a la API web (<code>web/app.py</code>). La versión de referencia que se entrega junto a este guion ya incluye este endpoint.</p>
 </li>
 <li>
 <p>Este endpoint debe encontrar la tarea en la base de datos, cambiar su estado <code>done</code> a <code>true</code> y guardar el cambio.</p>
@@ -1085,10 +1243,39 @@ Verá los logs de los cuatro contenedores iniciándose.</p>
 <p>Investigue sobre las "Dead Letter Exchanges" (DLX) en RabbitMQ.</p>
 </li>
 <li>
-<p>Modifique la declaración de la cola <code>task_created</code> en el servicio <code>web</code> y <code>worker</code> para que, si un mensaje es rechazado (nack) por el consumidor, se envíe a una DLX y, de ahí, a una cola de "letras muertas" (e.g., <code>tasks_failed</code>).</p>
+<p>Declare en <strong>ambos</strong> servicios, <code>web</code> y <code>worker</code>, el mismo exchange durable (<code>tasks_dlx</code>, tipo <code>direct</code>) y la cola durable <code>tasks_failed</code>, y vincule esta cola al exchange con la clave <code>tasks_failed</code>.</p>
+</li>
+<li>
+<p>Modifique la declaración de <code>task_created</code> en <strong>ambos</strong> servicios para incluir los argumentos <code>x-dead-letter-exchange=tasks_dlx</code> y <code>x-dead-letter-routing-key=tasks_failed</code>. Las declaraciones deben coincidir exactamente en productor y consumidor. La configuración necesaria en cada canal es:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">channel.exchange_declare(
+    exchange="tasks_dlx",
+    exchange_type="direct",
+    durable=True,
+)
+channel.queue_declare(queue="tasks_failed", durable=True)
+channel.queue_bind(
+    queue="tasks_failed",
+    exchange="tasks_dlx",
+    routing_key="tasks_failed",
+)
+channel.queue_declare(
+    queue="task_created",
+    durable=True,
+    arguments={
+        "x-dead-letter-exchange": "tasks_dlx",
+        "x-dead-letter-routing-key": "tasks_failed",
+    },
+)</code></pre>
+</div>
+</div>
 </li>
 <li>
 <p>Modifique el <code>worker.py</code> para que, si una tarea recibida no tiene un campo <code>title</code> (simulando un mensaje malformado), rechace el mensaje (<code>channel.basic_nack</code>) sin volver a encolarlo.</p>
+</li>
+<li>
+<p>Antes de volver a declarar <code>task_created</code> con argumentos nuevos, detenga los servicios y elimine esa cola existente solo cuando esté vacía: RabbitMQ no permite cambiar los argumentos de una cola ya declarada y eliminarla descarta sus mensajes pendientes. No elimine el volumen <code>postgres_data</code>.</p>
 </li>
 <li>
 <p>Verifique en la interfaz de RabbitMQ que, al enviar un mensaje sin <code>title</code>, este termina en la cola <code>tasks_failed</code>.</p>
@@ -1102,7 +1289,7 @@ Verá los logs de los cuatro contenedores iniciándose.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_5_conclusión_y_avance_de_la_próxima_práctica">5. 5. Conclusión y Avance de la Próxima Práctica</h2>
+<h2 id="_conclusiones_y_avance_de_la_próxima_práctica">5. Conclusiones y Avance de la Próxima Práctica</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>En esta práctica, hemos dado un salto monumental, pasando de un simple contenedor a una aplicación distribuida completa. Ha aprendido a usar Docker Compose para orquestar múltiples servicios, a garantizar la persistencia de datos con volúmenes, y a implementar patrones de comunicación asíncrona con colas de mensajes. Estas son las habilidades fundamentales para construir cualquier sistema moderno, escalable y resiliente.</p>
@@ -1125,7 +1312,7 @@ Verá los logs de los cuatro contenedores iniciándose.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-10-21 11:29:46 +0200
+Last updated 2026-11-09 18:54:42 +0100
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
